@@ -16,10 +16,10 @@
 package com.example.android.architecture.blueprints.todoapp.addedittask
 
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +30,7 @@ import com.example.android.architecture.blueprints.todoapp.util.setupSnackbar
 /**
  * Main UI for the add task screen. Users can enter a task title and description.
  */
-class AddEditTaskFragment : Fragment() {
+class AddEditTaskFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var viewDataBinding: AddtaskFragBinding
 
@@ -61,7 +61,7 @@ class AddEditTaskFragment : Fragment() {
     }
 
     private fun setupFab() {
-        activity.findViewById<FloatingActionButton>(R.id.fab_edit_task_done).apply {
+        activity!!.findViewById<FloatingActionButton>(R.id.fab_edit_task_done).apply {
             setImageResource(R.drawable.ic_done)
             setOnClickListener { viewDataBinding.viewmodel?.saveTask() }
         }
@@ -69,7 +69,7 @@ class AddEditTaskFragment : Fragment() {
 
     private fun setupActionBar() {
         (activity as AppCompatActivity).supportActionBar?.setTitle(
-                if (arguments != null && arguments.get(ARGUMENT_EDIT_TASK_ID) != null)
+                if (arguments != null && arguments!!.get(ARGUMENT_EDIT_TASK_ID) != null)
                     R.string.edit_task
                 else
                     R.string.add_task

@@ -15,7 +15,7 @@
  */
 package com.example.android.architecture.blueprints.todoapp.tasks
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +51,7 @@ class TasksAdapter(
             binding = TaskItemBinding.inflate(inflater, viewGroup, false)
         } else {
             // Recycling view
-            binding = DataBindingUtil.getBinding<TaskItemBinding>(view)
+            binding = DataBindingUtil.getBinding<TaskItemBinding>(view)!!
         }
 
         val userActionsListener = object : TaskItemUserActionsListener {
